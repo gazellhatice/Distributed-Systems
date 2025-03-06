@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  # Nginx Yük Dengeleyici
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - app1
+      - app2
+
+  # İlk Spring Boot Uygulaması
+  app1:
+    build: .
+    environment:
+      - SERVER_PORT=8080
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=distributed_db
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=hatice
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - postgres
+      - redis
+
+  # İkinci Spring Boot Uygulaması
+  app2:
+    build: .
+    environment:
+      - SERVER_PORT=8080
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=distributed_db
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=hatice
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - postgres
+      - redis
+
+  # PostgreSQL Veritabanı
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=distributed_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=hatice
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # Redis Cache
+  redis:
+    image: redis:latest
+    volumes:
+      - redis_data:/data
+
+volumes:
+  postgres_data:
+  redis_data:
