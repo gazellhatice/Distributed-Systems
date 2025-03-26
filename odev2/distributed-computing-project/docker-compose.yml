@@ -1,0 +1,24 @@
+version: '3'
+services:
+  master:
+    image: mpi-openmp-image
+    container_name: master
+    networks:
+      - mpi_network
+    environment:
+      - OMPI_ALLOW_RUN_AS_ROOT=1
+      - OMPI_ALLOW_RUN_AS_ROOT_CONFIRM=1
+    command: ["mpirun", "-np", "4", "/app/main"]
+  worker1:
+    image: mpi-openmp-image
+    container_name: worker1
+    networks:
+      - mpi_network
+  worker2:
+    image: mpi-openmp-image
+    container_name: worker2
+    networks:
+      - mpi_network
+
+networks:
+  mpi_network:
