@@ -19,7 +19,7 @@ docker-compose.yml → Çalışma ortamını tanımlayan dosya.
 
 YouTube Video Açıklaması
 📺 Nasıl çalıştırıldığını görmek için tıklayın:
-YouTube Linki Buraya
+(https://youtu.be/S2DhgnFE4TQ)
 
 Performans Karşılaştırması (MPI vs OpenMP)
 Yöntem	Çalıştırma Süresi
