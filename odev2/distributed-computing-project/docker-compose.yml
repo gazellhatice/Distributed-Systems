@@ -1,17 +1,17 @@
 version: '3'
 services:
   master:
-    image: mpi-openmp-image
-    container_name: master
+    image: mpi-openmp-image  # Kullanılacak Docker imajı (MPI ve OpenMP içeren bir imaj)
+    container_name: master   # Konteynerin adını "master" olarak belirler
     networks:
-      - mpi_network
+      - mpi_network          # "mpi_network" adında bir Docker ağına bağlanır
     environment:
       - OMPI_ALLOW_RUN_AS_ROOT=1
       - OMPI_ALLOW_RUN_AS_ROOT_CONFIRM=1
-    command: ["mpirun", "-np", "4", "/app/main"]
-  worker1:
-    image: mpi-openmp-image
-    container_name: worker1
+    command: ["mpirun", "-np", "4", "/app/main"]  # 4 işlemciyle "main" programını çalıştır
+  worker1:   # worker1 adında bir konteyner oluşturur.
+    image: mpi-openmp-image  # Aynı mpi-openmp-image imajını kullanır.
+    container_name: worker1  # "mpi_network" ağına bağlanır.
     networks:
       - mpi_network
   worker2:
