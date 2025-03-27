@@ -29,65 +29,6 @@ MPI, çok sayıda işlemciye dağıtıldığında daha verimli olur.
 
 OpenMP, tek makine içinde iş parçacıklarını yönetmek için daha iyidir.
 
-1️⃣ MPI (Message Passing Interface) Nedir?
-MPI, dağıtık bellekli sistemlerde çalışan bir paralel programlama modelidir.
-Yani, birden fazla bilgisayar (node) veya birden fazla işlemci arasında veri paylaşımı yaparak büyük ölçekli hesaplamaları hızlandırır.
-
-📌 Özellikleri:
-✅ Dağıtık bellekli sistemler için uygundur. (Farklı makinelerde çalışabilir.)
-✅ İşlemler birbirinden bağımsızdır ve veri paylaşımı mesajlarla sağlanır.
-✅ HPC (High Performance Computing - Yüksek Performanslı Hesaplama) sistemlerinde yaygın olarak kullanılır.
-✅ C, C++, Fortran gibi dillerle kullanılabilir.
-
-📌 Çalışma Mantığı:
-
-MPI_Init: MPI ortamını başlatır.
-
-MPI_Comm_rank: Mevcut sürecin ID’sini alır.
-
-MPI_Comm_size: Toplam süreç sayısını alır.
-
-MPI_Send / MPI_Recv: Süreçler arasında mesaj göndermek ve almak için kullanılır.
-
-MPI_Finalize: MPI programını sonlandırır.
-
-📌 Avantajları:
-✅ Büyük ölçekli sistemlerde iyi çalışır.
-✅ Farklı makinelerle iletişim kurarak süper bilgisayar seviyesinde hesaplama yapabilir.
-✅ Veri paylaşımı kontrollü olduğu için ölçeklenebilirliği yüksektir.
-
-📌 Dezavantajları:
-❌ Programlaması daha zor çünkü mesaj gönderme/alma işlemlerini elle yönetmek gerekir.
-❌ Senkronizasyon ve veri paylaşımı zor olabilir.
-
-2️⃣ OpenMP (Open Multi-Processing) Nedir?
-OpenMP, paylaşımlı bellekli sistemlerde çalışan bir paralel programlama modelidir.
-Yani tek bir bilgisayardaki çok çekirdekli işlemcileri kullanarak hesaplamaları hızlandırır.
-
-📌 Özellikleri:
-✅ Paylaşımlı bellekli sistemler için uygundur. (Tek bir makinede çalışır.)
-✅ İş parçacıkları (threads) kullanarak paralellik sağlar.
-✅ C, C++, Fortran dillerine kolayca entegre edilebilir.
-✅ Kodun içine pragma (#pragma omp) komutları eklenerek paralellik sağlanır.
-
-📌 Çalışma Mantığı:
-
-#pragma omp parallel: Kodun paralel çalışmasını sağlar.
-
-#pragma omp for: Döngüleri paralel hale getirir.
-
-#pragma omp critical: Kritik bölgelerde tek iş parçacığının çalışmasını sağlar.
-
-#pragma omp barrier: Bütün iş parçacıklarının eşitlenmesini sağlar.
-
-📌 Avantajları:
-✅ Kodun içine direkt eklenebilir, mesajlaşma gerektirmez.
-✅ Daha kolay programlanabilir.
-✅ Hızlı ve düşük gecikmeli (low-latency) hesaplamalar için uygundur.
-
-📌 Dezavantajları:
-❌ Sadece paylaşımlı bellek sistemlerinde çalışır. (Farklı makinelerde çalışamaz.)
-❌ Çok fazla çekirdek eklenince verim düşebilir.
 
 1️⃣ MPI (Message Passing Interface) Nedir?
 MPI, dağıtık bellekli sistemlerde çalışan bir paralel programlama modelidir.
